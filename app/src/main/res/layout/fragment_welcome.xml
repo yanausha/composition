@@ -16,10 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="32dp"
+            android:contentDescription="@string/content_logo"
             android:src="@drawable/welcome_brain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView_title"
@@ -44,8 +46,8 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_understand"
             android:layout_margin="16dp"
+            android:text="@string/button_understand"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
