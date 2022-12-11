@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.composition.data.GameRepositoryImpl
 import com.example.composition.domain.entity.GameSettings
 import com.example.composition.domain.entity.Level
+import com.example.composition.domain.entity.Question
 import com.example.composition.domain.usecases.GenerateQuestionUseCase
 import com.example.composition.domain.usecases.GetGameSettingsUseCase
 
@@ -26,9 +27,14 @@ class GameViewModel : ViewModel() {
     val formattedTimer: LiveData<String>
         get() = _formattedTimer
 
+    private val _question = MutableLiveData<Question>()
+    val question: LiveData<Question>
+        get() = _question
+
     fun startGame(level: Level) {
         getGameSettings(level)
         startTimer()
+        generateQuestion()
     }
 
     private fun getGameSettings(level: Level) {
@@ -50,6 +56,10 @@ class GameViewModel : ViewModel() {
             }
         }
         timer?.start()
+    }
+
+    private fun generateQuestion() {
+        _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
     }
 
     private fun timeFormat(millisUntilFinished: Long): String {
