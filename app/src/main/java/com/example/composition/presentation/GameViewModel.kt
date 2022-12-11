@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.composition.R
 import com.example.composition.data.GameRepositoryImpl
+import com.example.composition.domain.entity.GameResult
 import com.example.composition.domain.entity.GameSettings
 import com.example.composition.domain.entity.Level
 import com.example.composition.domain.entity.Question
@@ -56,6 +57,10 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private var _minPercent = MutableLiveData<Int>()
     val minPercent: LiveData<Int>
         get() = _minPercent
+
+    private var _gameResult = MutableLiveData<GameResult>()
+    val gameResult: LiveData<GameResult>
+        get() = _gameResult
 
     fun startGame(level: Level) {
         getGameSettings(level)
@@ -125,7 +130,12 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun finishGame() {
-
+        _gameResult.value = GameResult(
+            enoughCountOfAnswers.value == true && enoughPercentOfAnswers.value == true,
+            countOfRightAnswers,
+            countOfQuestions,
+            gameSettings
+        )
     }
 
     override fun onCleared() {
