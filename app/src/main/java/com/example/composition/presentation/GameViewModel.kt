@@ -23,6 +23,9 @@ class GameViewModel : ViewModel() {
 
     private var timer: CountDownTimer? = null
 
+    private var countOfRightAnswers = 0
+    private var countOfQuestions = 0
+
     private val _formattedTimer = MutableLiveData<String>()
     val formattedTimer: LiveData<String>
         get() = _formattedTimer
@@ -60,6 +63,17 @@ class GameViewModel : ViewModel() {
 
     private fun generateQuestion() {
         _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
+    }
+
+    private fun chooseAnswers(number: Int) {
+        checkAnswer(number)
+        generateQuestion()
+    }
+
+    private fun checkAnswer(number: Int) {
+        val rightAnswer = _question.value?.rightAnswer
+        if (number == rightAnswer) countOfRightAnswers++
+        countOfQuestions++
     }
 
     private fun timeFormat(millisUntilFinished: Long): String {
