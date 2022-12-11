@@ -34,6 +34,14 @@ class GameViewModel : ViewModel() {
     val question: LiveData<Question>
         get() = _question
 
+    private var _percentOfRightAnswers = MutableLiveData<Int>()
+    val percentOfRightAnswers: LiveData<Int>
+        get() = _percentOfRightAnswers
+
+    private var _progressAnswers = MutableLiveData<String>()
+    val progressAnswers: LiveData<String>
+        get() = _progressAnswers
+
     fun startGame(level: Level) {
         getGameSettings(level)
         startTimer()
@@ -74,6 +82,15 @@ class GameViewModel : ViewModel() {
         val rightAnswer = _question.value?.rightAnswer
         if (number == rightAnswer) countOfRightAnswers++
         countOfQuestions++
+    }
+
+    private fun updateProgress() {
+        val percent = calculatePercentOfRightAnswers()
+        _percentOfRightAnswers.value = percent
+    }
+
+    private fun calculatePercentOfRightAnswers(): Int {
+        return ((countOfRightAnswers.toDouble() / countOfQuestions * 100) * 100).toInt()
     }
 
     private fun timeFormat(millisUntilFinished: Long): String {
