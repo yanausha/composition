@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.composition.R
 import com.example.composition.databinding.FragmentGameBinding
 import com.example.composition.domain.entity.GameResult
-import com.example.composition.domain.entity.GameSettings
 import com.example.composition.domain.entity.Level
 
 class GameFragment : Fragment() {
@@ -43,20 +42,34 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvQuestion.setOnClickListener {
-            launchGameFinishedFragment(
-                GameResult(
-                    true,
-                    10,
-                    10,
-                    GameSettings(
-                        5,
-                        5,
-                        5,
-                        5
-                    )
-                )
-            )
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.formattedTimer.observe(viewLifecycleOwner) {
+            viewModel.startGame(level)
+        }
+        viewModel.question.observe(viewLifecycleOwner) {
+            binding.tvSum.text = it.sum.toString()
+            binding.tvLeftNumber.text = it.visibleNumber.toString()
+        }
+        viewModel.percentOfRightAnswers.observe(viewLifecycleOwner) {
+
+        }
+        viewModel.progressAnswers.observe(viewLifecycleOwner) {
+
+        }
+        viewModel.enoughCountOfAnswers.observe(viewLifecycleOwner) {
+
+        }
+        viewModel.enoughPercentOfAnswers.observe(viewLifecycleOwner) {
+
+        }
+        viewModel.minPercent.observe(viewLifecycleOwner) {
+
+        }
+        viewModel.gameResult.observe(viewLifecycleOwner) {
+
         }
     }
 
