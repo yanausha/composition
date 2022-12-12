@@ -68,7 +68,7 @@ class GameFragment : Fragment() {
                 textViewOptions[i].text = it.options[i].toString()
         }
         viewModel.percentOfRightAnswers.observe(viewLifecycleOwner) {
-
+            binding.progressBar.setProgress(it, true)
         }
         viewModel.progressAnswers.observe(viewLifecycleOwner) {
 
