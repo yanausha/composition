@@ -48,6 +48,11 @@ class GameFinishedFragment : Fragment() {
                 gameResult.gameSettings.minCountOfRightsAnswers
             )
 
+            textViewScoreAnswers.text = String.format(
+                getString(R.string.score_answers),
+                gameResult.countOfRightAnswers
+            )
+
         }
     }
 
