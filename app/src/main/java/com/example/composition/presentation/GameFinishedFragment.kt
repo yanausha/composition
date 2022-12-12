@@ -42,6 +42,12 @@ class GameFinishedFragment : Fragment() {
     private fun bindViews() {
         with(binding) {
             imageViewResult.setImageResource(getSmileResId(gameResult.winner))
+
+            textViewRequiredAnswers.text = String.format(
+                getString(R.string.required_score),
+                gameResult.gameSettings.minCountOfRightsAnswers
+            )
+
         }
     }
 
