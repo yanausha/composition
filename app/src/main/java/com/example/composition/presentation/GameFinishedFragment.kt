@@ -53,7 +53,21 @@ class GameFinishedFragment : Fragment() {
                 gameResult.countOfRightAnswers
             )
 
+            textViewRequiredPercentage.text = String.format(
+                getString(R.string.required_percentage),
+                gameResult.gameSettings.minPercentOfRightAnswers
+            )
+
+            textViewScorePercentage.text = String.format(
+                getString(R.string.score_percentage),
+                getPercentOfRightAnswers()
+            )
         }
+    }
+
+    private fun getPercentOfRightAnswers() = with(gameResult) {
+        if (countOfQuestions == 0) 0
+        else ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
     }
 
     private fun getSmileResId(winner: Boolean): Int {
