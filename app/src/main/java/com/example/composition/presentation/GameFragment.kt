@@ -64,6 +64,8 @@ class GameFragment : Fragment() {
         viewModel.question.observe(viewLifecycleOwner) {
             binding.tvSum.text = it.sum.toString()
             binding.tvLeftNumber.text = it.visibleNumber.toString()
+            for (i in 0..textViewOptions.size)
+                textViewOptions[i].text = it.options[i].toString()
         }
         viewModel.percentOfRightAnswers.observe(viewLifecycleOwner) {
 
