@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.composition.R
 import com.example.composition.databinding.FragmentGameBinding
@@ -74,7 +75,9 @@ class GameFragment : Fragment() {
 
         }
         viewModel.enoughCountOfAnswers.observe(viewLifecycleOwner) {
-
+            val colorResId = if (it) android.R.color.holo_green_light else android.R.color.holo_red_light
+            val color = ContextCompat.getColor(requireContext(), colorResId)
+            binding.tvAnswersProgress.setTextColor(color)
         }
         viewModel.enoughPercentOfAnswers.observe(viewLifecycleOwner) {
 
