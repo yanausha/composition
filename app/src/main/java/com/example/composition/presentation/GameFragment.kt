@@ -85,7 +85,7 @@ class GameFragment : Fragment() {
             binding.progressBar.secondaryProgress = it
         }
         viewModel.gameResult.observe(viewLifecycleOwner) {
-
+            launchGameFinishedFragment(it)
         }
     }
 
