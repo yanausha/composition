@@ -78,13 +78,14 @@ class GameFragment : Fragment() {
             binding.tvAnswersProgress.text = it
         }
         viewModel.enoughCountOfAnswers.observe(viewLifecycleOwner) {
-            binding.tvAnswersProgress.setTextColor(setColor(it))
-        }
-        viewModel.enoughPercentOfAnswers.observe(viewLifecycleOwner) {
-            binding.progressBar.progressTintList = ColorStateList.valueOf(setColor(it))
+            binding.tvAnswersProgress.setTextColor(setColorForAnswers(it))
         }
         viewModel.minPercent.observe(viewLifecycleOwner) {
             binding.progressBar.secondaryProgress = it
+        }
+        viewModel.enoughPercentOfAnswers.observe(viewLifecycleOwner) {
+            val color = setColorForAnswers(it)
+            binding.progressBar.progressTintList = ColorStateList.valueOf(color)
         }
         viewModel.gameResult.observe(viewLifecycleOwner) {
             launchGameFinishedFragment(it)
@@ -99,9 +100,13 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun setColor(state: Boolean): Int {
+    private fun setColorForAnswers(state: Boolean): Int {
         val colorResId =
-            if (state) android.R.color.holo_green_light else android.R.color.holo_red_light
+            if (state) {
+                android.R.color.holo_green_light
+            } else {
+                android.R.color.holo_red_light
+            }
         return ContextCompat.getColor(requireContext(), colorResId)
     }
 
