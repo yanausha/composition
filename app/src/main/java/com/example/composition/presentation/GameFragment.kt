@@ -82,7 +82,7 @@ class GameFragment : Fragment() {
             binding.progressBar.progressTintList = ColorStateList.valueOf(setColor(it))
         }
         viewModel.minPercent.observe(viewLifecycleOwner) {
-
+            binding.progressBar.secondaryProgress = it
         }
         viewModel.gameResult.observe(viewLifecycleOwner) {
 
