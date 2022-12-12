@@ -68,14 +68,14 @@ class GameFragment : Fragment() {
         viewModel.question.observe(viewLifecycleOwner) {
             binding.tvSum.text = it.sum.toString()
             binding.tvLeftNumber.text = it.visibleNumber.toString()
-            for (i in 0..textViewOptions.size)
+            for (i in 0 until textViewOptions.size)
                 textViewOptions[i].text = it.options[i].toString()
         }
         viewModel.percentOfRightAnswers.observe(viewLifecycleOwner) {
             binding.progressBar.setProgress(it, true)
         }
         viewModel.progressAnswers.observe(viewLifecycleOwner) {
-
+            binding.tvAnswersProgress.text = it
         }
         viewModel.enoughCountOfAnswers.observe(viewLifecycleOwner) {
             binding.tvAnswersProgress.setTextColor(setColor(it))
