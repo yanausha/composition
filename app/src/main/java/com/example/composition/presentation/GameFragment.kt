@@ -57,6 +57,8 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        viewModel.startGame(level)
+        setOnClickListenersToOptions()
     }
 
     private fun observeViewModel() {
@@ -86,6 +88,14 @@ class GameFragment : Fragment() {
         }
         viewModel.gameResult.observe(viewLifecycleOwner) {
             launchGameFinishedFragment(it)
+        }
+    }
+
+    private fun setOnClickListenersToOptions() {
+        for (tvOption in textViewOptions) {
+            tvOption.setOnClickListener {
+                viewModel.chooseAnswers(tvOption.text.toString().toInt())
+            }
         }
     }
 

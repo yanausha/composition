@@ -94,7 +94,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
     }
 
-    private fun chooseAnswers(number: Int) {
+    fun chooseAnswers(number: Int) {
         checkAnswer(number)
         updateProgress()
         generateQuestion()
