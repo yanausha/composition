@@ -61,7 +61,7 @@ class GameFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.formattedTimer.observe(viewLifecycleOwner) {
-            viewModel.startGame(level)
+            binding.tvTimer.text = it
         }
         viewModel.question.observe(viewLifecycleOwner) {
             binding.tvSum.text = it.sum.toString()
