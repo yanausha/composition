@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentManager
+import com.example.composition.R
 import com.example.composition.databinding.FragmentGameFinishedBinding
 import com.example.composition.domain.entity.GameResult
 
@@ -34,6 +35,21 @@ class GameFinishedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupClickListeners()
+        bindViews()
+    }
+
+    private fun bindViews() {
+        with(binding) {
+            imageViewResult.setImageResource(getSmileResId(gameResult.winner))
+        }
+    }
+
+    private fun getSmileResId(winner: Boolean): Int {
+        return if (winner) R.drawable.happy_brain else R.drawable.sad_brain
+    }
+
+    private fun setupClickListeners() {
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
