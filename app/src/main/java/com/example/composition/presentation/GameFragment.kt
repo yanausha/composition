@@ -1,5 +1,6 @@
 package com.example.composition.presentation
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -75,12 +76,10 @@ class GameFragment : Fragment() {
 
         }
         viewModel.enoughCountOfAnswers.observe(viewLifecycleOwner) {
-            val colorResId = if (it) android.R.color.holo_green_light else android.R.color.holo_red_light
-            val color = ContextCompat.getColor(requireContext(), colorResId)
-            binding.tvAnswersProgress.setTextColor(color)
+            binding.tvAnswersProgress.setTextColor(setColor(it))
         }
         viewModel.enoughPercentOfAnswers.observe(viewLifecycleOwner) {
-
+            binding.progressBar.progressTintList = ColorStateList.valueOf(setColor(it))
         }
         viewModel.minPercent.observe(viewLifecycleOwner) {
 
@@ -88,6 +87,12 @@ class GameFragment : Fragment() {
         viewModel.gameResult.observe(viewLifecycleOwner) {
 
         }
+    }
+
+    private fun setColor(state: Boolean): Int {
+        val colorResId =
+            if (state) android.R.color.holo_green_light else android.R.color.holo_red_light
+        return ContextCompat.getColor(requireContext(), colorResId)
     }
 
     override fun onDestroyView() {
