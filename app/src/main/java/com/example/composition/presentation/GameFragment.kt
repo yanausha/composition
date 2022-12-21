@@ -17,12 +17,12 @@ import com.example.composition.domain.entity.Level
 class GameFragment : Fragment() {
 
     private lateinit var level: Level
+    private val viewModelFactory by lazy {
+        GameViewModelFactory(requireActivity().application, level)
+    }
 
     private val viewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        ).get(GameViewModel::class.java)
+        ViewModelProvider(this, viewModelFactory).get(GameViewModel::class.java)
     }
 
     private val textViewOptions by lazy {
