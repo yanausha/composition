@@ -34,23 +34,24 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun bindViews() {
+        binding.gameResult = args.gameResult
         with(binding) {
             imageViewResult.setImageResource(getSmileResId(args.gameResult.winner))
 
-            textViewRequiredAnswers.text = String.format(
-                getString(R.string.required_score),
-                args.gameResult.gameSettings.minCountOfRightsAnswers
-            )
-
-            textViewScoreAnswers.text = String.format(
-                getString(R.string.score_answers),
-                args.gameResult.countOfRightAnswers
-            )
-
-            textViewRequiredPercentage.text = String.format(
-                getString(R.string.required_percentage),
-                args.gameResult.gameSettings.minPercentOfRightAnswers
-            )
+//            textViewRequiredAnswers.text = String.format(
+//                getString(R.string.required_score),
+//                args.gameResult.gameSettings.minCountOfRightsAnswers
+//            )
+//
+//            textViewScoreAnswers.text = String.format(
+//                getString(R.string.score_answers),
+//                args.gameResult.countOfRightAnswers
+//            )
+//
+//            textViewRequiredPercentage.text = String.format(
+//                getString(R.string.required_percentage),
+//                args.gameResult.gameSettings.minPercentOfRightAnswers
+//            )
 
             textViewScorePercentage.text = String.format(
                 getString(R.string.score_percentage),
