@@ -1,65 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.GameFinishedFragment">
+<layout>
 
-    <ImageView
-        android:id="@+id/imageView_result"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="32dp"
-        android:contentDescription="@string/game_over"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck"
-        tools:src="@drawable/happy_brain" />
+        android:layout_height="match_parent"
+        tools:context=".presentation.GameFinishedFragment">
 
-    <TextView
-        android:id="@+id/textView_required_answers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/required_score"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/imageView_result" />
+        <ImageView
+            android:id="@+id/imageView_result"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="32dp"
+            android:contentDescription="@string/game_over"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@drawable/happy_brain" />
 
-    <TextView
-        android:id="@+id/textView_score_answers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/score_answers"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/textView_required_answers" />
+        <TextView
+            android:id="@+id/textView_required_answers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/required_score"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/imageView_result" />
 
-    <TextView
-        android:id="@+id/textView_required_percentage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/required_percentage"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/textView_score_answers" />
+        <TextView
+            android:id="@+id/textView_score_answers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/score_answers"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/textView_required_answers" />
 
-    <TextView
-        android:id="@+id/textView_score_percentage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/score_percentage"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/textView_required_percentage" />
+        <TextView
+            android:id="@+id/textView_required_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/required_percentage"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/textView_score_answers" />
 
-    <Button
-        android:id="@+id/button_retry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/retry"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/textView_score_percentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/score_percentage"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/textView_required_percentage" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/button_retry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/retry"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
